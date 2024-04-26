@@ -17,6 +17,11 @@ func QuotsModifed(result []string, i int) ([]string, int) {
 		if result[i+count-1][0] == ' ' {
 			result[i+count-1] = ""
 		}
+		for _, c := range result[i+count-1] {
+			if IsPonc(c) {
+				result[i+count-1]=result[i+count-1][:len(result[i+count-1])-1]
+			}
+		}
 		i += count
 	}
 	return result, i

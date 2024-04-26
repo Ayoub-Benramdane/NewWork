@@ -27,6 +27,9 @@ func SplitWhiteSpaces(str string) []string {
 		}
 		if str[i] == '(' {
 			result, i = SplitFlags(str, result, i)
+			if i >= len(str) {
+				break
+			}
 		}
 		if str[i] != ' ' && str[i] != '\n' {
 			result, spaceStr, count, newStr = SpaceStr(result, newStr, spaceStr, str[i:], count)
