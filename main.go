@@ -10,8 +10,8 @@ func main() {
 		return
 	}
 	sample, _ := os.ReadFile(os.Args[1])
-	args := function.SplitWhiteSpaces(string(sample))
-	resFinal := os.WriteFile(os.Args[2], []byte(function.PrintStrFinal(args)), 0644)
+	result := function.Split(string(sample))
+	resFinal := os.WriteFile(os.Args[2], []byte(function.PrintStrFinal(result)), 0644)
 	if resFinal != nil {
 		return
 	}
