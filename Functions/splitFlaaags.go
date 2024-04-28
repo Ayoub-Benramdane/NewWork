@@ -1,6 +1,7 @@
 package function
 
 import (
+	"fmt"
 	"strconv"
 )
 
@@ -21,8 +22,9 @@ func SplitFlags(str string, result []string, i int, newStr, spaceStr string) ([]
 				result = append(result, newStr)
 				newStr = ""
 			}
-			spaceStr, newStr, i = SpacesFlag(str, newStr, spaceStr, i, ch, ch1, k)
-			result, spaceStr = ModificationByFlags(result, spaceStr, stf)
+			fmt.Println(spaceStr)
+			result, spaceStr, newStr, i = SpacesFlag(result, str, newStr, spaceStr, i, ch, ch1, k)
+			result = ModificationByFlags(result, stf)
 			return result, i + len(stf), newStr, spaceStr
 		}
 		if stf == c && ch == 2 {
@@ -45,7 +47,7 @@ func SplitFlags(str string, result []string, i int, newStr, spaceStr string) ([]
 			if notValid || !lenValid {
 				break
 			}
-			spaceStr, newStr, i = SpacesFlag(str, newStr, spaceStr, i, ch, k, ch1)
+			result, spaceStr, newStr, i = SpacesFlag(result, str, newStr, spaceStr, i, ch, ch1, k)
 			if newStr != "" {
 				result = append(result, newStr)
 				newStr = ""

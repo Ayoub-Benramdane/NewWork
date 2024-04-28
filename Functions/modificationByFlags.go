@@ -4,7 +4,7 @@ import (
 	"strconv"
 )
 
-func ModificationByFlags(result []string, spaceStr, stf string) ([]string, string) {
+func ModificationByFlags(result []string, stf string) ([]string) {
 	IsModified := false
 	strToConverted := ""
 	strPonc := ""
@@ -55,5 +55,5 @@ func ModificationByFlags(result []string, spaceStr, stf string) ([]string, strin
 			}
 		}
 	}
-	return result, spaceStr
+	return result
 }
