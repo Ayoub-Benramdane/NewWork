@@ -21,14 +21,12 @@ func SplitPonc(result []string, newStr, str string, i int) ([]string, string, in
 	}
 	if len(result) > 0 && result[len(result)-1] != "'" {
 		strPonc, i = StrPonc(str, strPonc, i)
-		if i < len(str) {
+		if i <= len(str) {
 			if result[len(result)-1][0] == ' ' {
 				result[len(result)-1] = strPonc + " "
 			} else {
 				result[len(result)-1] += strPonc + " "
 			}
-		} else {
-			result[len(result)-1] += strPonc
 		}
 	} else {
 		strPonc, i = StrPonc(str, strPonc, i)
