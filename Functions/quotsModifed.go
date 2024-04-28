@@ -3,6 +3,7 @@ package function
 func QuotsModifed(result []string, i int) ([]string, int) {
 	quots := false
 	count := 0
+	X := result[i-1]
 	for j := i + 1; j < len(result); j++ {
 		count++
 		if result[j] == "'" {
@@ -13,18 +14,17 @@ func QuotsModifed(result []string, i int) ([]string, int) {
 	if quots {
 		if len(result[i+1]) == 0 || result[i+1][0] == ' ' {
 			result[i+1] = ""
-
 		}
-		if i > 0  && len(result[i-1]) != 0 {
-			if !IsPonc(rune(result[i-1][len(result[i-1])-2])) && result[i-1][0] != ' ' {
-				result[i-1] += " "
+		if i > 0 && len(X) != 0 {
+			if len(X) > 2 && !IsPonc(rune(X[len(X)-2])) && X[0] != ' ' && X[0] != '\'' {
+				X += " "
 			}
 		}
 		if len(result[i+count-1]) == 0 || result[i+count-1][0] == ' ' {
 			result[i+count-1] = ""
 
 		}
-		if i < len(result)-count-1  && len(result[i+count+1]) != 0 {
+		if i < len(result)-count-1 && len(result[i+count+1]) != 0 {
 			if !IsPonc(rune(result[i+count+1][0])) && result[i+count+1][0] != ' ' {
 				result[i+count] += " "
 			}
