@@ -8,7 +8,7 @@ func CheckFlag(i int, str, stf string, k, ch, ch1 int) (int, int, int, string) {
 			ch = 1
 			break
 		}
-		if str[j] == ' ' {
+		if str[j] == ' ' && j != len(str)-1 {
 			ch = 2
 			k = j + 1
 			break
