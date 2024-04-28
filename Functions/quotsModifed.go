@@ -15,15 +15,17 @@ func QuotsModifed(result []string, i int) ([]string, int) {
 			result[i+1] = ""
 
 		}
-		if len(result[i-1]) == 0 || result[i-1][0] != ' ' {
-			result[i-1] += " "
+		if i > 0  && len(result[i-1]) != 0 {
+			if !IsPonc(rune(result[i-1][len(result[i-1])-2])) && result[i-1][0] != ' ' {
+				result[i-1] += " "
+			}
 		}
 		if len(result[i+count-1]) == 0 || result[i+count-1][0] == ' ' {
 			result[i+count-1] = ""
 
 		}
-		if len(result[i+count+1]) == 0 || result[i+count+1][0] != ' ' {
-			if len(result[i+count+1]) == 0 || !IsPonc(rune(result[i+count+1][0])) {
+		if i < len(result)-count-1  && len(result[i+count+1]) != 0 {
+			if !IsPonc(rune(result[i+count+1][0])) && result[i+count+1][0] != ' ' {
 				result[i+count] += " "
 			}
 		}
