@@ -11,6 +11,7 @@ func SplitFlags(str string, result []string, i int, newStr, spaceStr string) ([]
 	ch := 0
 	ch1 := 0
 	k := 0
+	lenValid := true
 	notValid := false
 	k, ch, ch1, stf = CheckFlag(i, str, stf, k, ch, ch1)
 	for _, c := range flags {
@@ -28,7 +29,10 @@ func SplitFlags(str string, result []string, i int, newStr, spaceStr string) ([]
 			for j := k; j < len(str); j++ {
 				k++
 				if str[j] == ')' {
+					lenValid = true
 					break
+				} else {
+					lenValid = false
 				}
 				index += string(str[j])
 			}
@@ -38,7 +42,7 @@ func SplitFlags(str string, result []string, i int, newStr, spaceStr string) ([]
 					break
 				}
 			}
-			if notValid {
+			if notValid || !lenValid {
 				break
 			}
 			spaceStr, newStr, i = SpacesFlag(str, newStr, spaceStr, i, ch, k, ch1)

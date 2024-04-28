@@ -1,7 +1,5 @@
 package function
 
-import "fmt"
-
 func StrPonc(str, strPonc string, i int) (string, int) {
 	for j := i; j < len(str); j++ {
 		if str[j] != ' ' && !IsPonc(rune(str[j])) {
@@ -36,6 +34,5 @@ func SplitPonc(result []string, newStr, str string, i int) ([]string, string, in
 		strPonc, i = StrPonc(str, strPonc, i)
 		result = append(result, strPonc+" ")
 	}
-	fmt.Println(string(result[len(result)-1][0]))
 	return result, newStr, i
 }

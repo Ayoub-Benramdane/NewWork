@@ -10,9 +10,6 @@ func ModificationByFlags(result []string, spaceStr, stf string) ([]string, strin
 	strPonc := ""
 	for i := len(result) - 1; i >= 0; i-- {
 		if IsModified {
-			if result[len(result) -1][0] != ' ' {
-				spaceStr += " "
-			}
 			break
 		}
 		if stf == "(hex)" || stf == "(bin)" {

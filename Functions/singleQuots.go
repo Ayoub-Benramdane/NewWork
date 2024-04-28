@@ -16,6 +16,7 @@ func SingleQuots(result []string, spaceStr, newStr, str string, i int) ([]string
 	if IsValid {
 		if newStr != "" || spaceStr != "" {
 			result = append(result, newStr, spaceStr)
+			newStr = ""
 			spaceStr = ""
 		}
 		result = append(result, string(str[i]))

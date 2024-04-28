@@ -4,7 +4,6 @@ func IsHexBin(str, base string) (bool, string, string) {
 	var baseToConverte []rune
 	strToConverted := ""
 	strPonc := ""
-	breaking := false
 	if base == "(bin)" {
 		baseToConverte = []rune{'0', '1'}
 	} else {
@@ -12,13 +11,9 @@ func IsHexBin(str, base string) (bool, string, string) {
 	}
 	IsValid := false
 	for i, c := range str {
-		if breaking {
-			break
-		}
 		IsValid = false
 		for _, v := range baseToConverte {
 			if strPonc != "" && c == ' ' && i == len(str)-1 {
-				breaking = true
 				IsValid = true
 				break
 			}

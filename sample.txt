@@ -1,3 +1,4 @@
-quoats
-space dial hhhd (up),  flag
-len f (hex
+..quoats 10 (bin) , 1e (up) uo
+quoats (up, 2
+space      ,     ,           ,                 dial hhhd (up),  flag
+len f (up, 2)

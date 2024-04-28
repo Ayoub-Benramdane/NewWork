@@ -11,14 +11,20 @@ func QuotsModifed(result []string, i int) ([]string, int) {
 		}
 	}
 	if quots {
-		if result[i+1][0] == ' ' {
+		if len(result[i+1]) == 0 || result[i+1][0] == ' ' {
 			result[i+1] = ""
+
 		}
-		if len(result[i+count]) == 0 || result[i+count][0] == ' ' {
-			if result[i+count][0] == ' ' {
-				result[i+count] = ""
-			} else {
-				result[i+count+1] += " "
+		if len(result[i-1]) == 0 || result[i-1][0] != ' ' {
+			result[i-1] += " "
+		}
+		if len(result[i+count-1]) == 0 || result[i+count-1][0] == ' ' {
+			result[i+count-1] = ""
+
+		}
+		if len(result[i+count+1]) == 0 || result[i+count+1][0] != ' ' {
+			if len(result[i+count+1]) == 0 || !IsPonc(rune(result[i+count+1][0])) {
+				result[i+count] += " "
 			}
 		}
 		for _, c := range result[i+count-1] {

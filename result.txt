@@ -1,3 +1,4 @@
-quoats
-space dial HHHD ,  flag
-len f (hex
+.. quoats 2, 1Euo
+quoats (up, 2
+space,,, dial HHHD,  flag
+LEN F
