@@ -8,26 +8,26 @@ func SplitFlags(str string, result []string, i int, newStr, spaceStr string) ([]
 	flags := []string{"(hex)", "(bin)", "(cap)", "(up)", "(low)", "(cap, ", "(up, ", "(low, "}
 	stf := ""
 	index := ""
-	ch := 0
-	ch1 := 0
-	k := 0
+	paramOrNot := 0
+	endFlag := 0
+	endFlagParam := 0
 	lenValid := true
 	notValid := false
-	k, ch, ch1, stf = CheckFlag(i, str, stf, k, ch, ch1)
+	endFlagParam, paramOrNot, endFlag, stf = CheckFlag(i, str, stf, endFlagParam, paramOrNot, endFlag)
 	for _, c := range flags {
 		notValid = false
-		if stf == c && ch == 1 {
+		if stf == c && paramOrNot == 1 {
 			if newStr != "" {
 				result = append(result, newStr)
 				newStr = ""
 			}
-			result, spaceStr, newStr, i = SpacesFlag(result, str, newStr, spaceStr, i, ch, ch1, k)
+			result, spaceStr, newStr, i = SpacesFlag(result, str, newStr, spaceStr, i, paramOrNot, endFlag, endFlagParam)
 			result = ModificationByFlags(result, stf)
 			return result, i + len(stf), newStr, spaceStr
 		}
-		if stf == c && ch == 2 {
-			for j := k; j < len(str); j++ {
-				k++
+		if stf == c && paramOrNot == 2 {
+			for j := endFlagParam; j < len(str); j++ {
+				endFlagParam++
 				if str[j] == ')' {
 					lenValid = true
 					break
@@ -45,7 +45,7 @@ func SplitFlags(str string, result []string, i int, newStr, spaceStr string) ([]
 			if notValid || !lenValid {
 				break
 			}
-			result, spaceStr, newStr, i = SpacesFlag(result, str, newStr, spaceStr, i, ch, ch1, k)
+			result, spaceStr, newStr, i = SpacesFlag(result, str, newStr, spaceStr, i, paramOrNot, endFlag, endFlagParam)
 			if newStr != "" {
 				result = append(result, newStr)
 				newStr = ""

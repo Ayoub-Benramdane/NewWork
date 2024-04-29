@@ -1,18 +1,18 @@
 package function
 
-func CheckFlag(i int, str, stf string, k, ch, ch1 int) (int, int, int, string) {
+func CheckFlag(i int, str, stf string, endFlagParam, paramOrNot, endFlag int) (int, int, int, string) {
 	for j := i; j < len(str); j++ {
-		ch1++
+		endFlag++
 		stf += string(str[j])
 		if str[j] == ')' {
-			ch = 1
+			paramOrNot = 1
 			break
 		}
 		if str[j] == ' ' && j != len(str)-1 {
-			ch = 2
-			k = j + 1
+			paramOrNot = 2
+			endFlagParam = j + 1
 			break
 		}
 	}
-	return k, ch, ch1, stf
+	return endFlagParam, paramOrNot, endFlag, stf
 }
