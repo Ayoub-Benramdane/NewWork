@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
-	function "function/Functions"
 	"os"
 	"strings"
+
+	function "function/Functions"
 )
 
 func main() {
@@ -16,8 +16,7 @@ func main() {
 	}
 	sample, _ := os.ReadFile(os.Args[1])
 	result := function.Split(string(sample))
-	fmt.Println(result)
-	resFinal := os.WriteFile(os.Args[2], []byte(strings.Trim(function.PrintStrFinal(result), " ")), 0644)
+	resFinal := os.WriteFile(os.Args[2], []byte(strings.Trim(function.PrintStrFinal(result), " ")), 0o644)
 	if resFinal != nil {
 		return
 	}
