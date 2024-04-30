@@ -21,7 +21,6 @@ func QuotsModifed(result []string, i int) ([]string, int) {
 		}
 		if len(result[i+count-1]) == 0 || result[i+count-1][0] == ' ' {
 			result[i+count-1] = ""
-
 		}
 		if i < len(result)-count-1 && len(result[i+count+1]) != 0 {
 			if !IsPonc(rune(result[i+count+1][0])) && result[i+count+1][0] != ' ' {
@@ -31,6 +30,7 @@ func QuotsModifed(result []string, i int) ([]string, int) {
 		for _, c := range result[i+count-1] {
 			if IsPonc(c) {
 				result[i+count-1] = result[i+count-1][:len(result[i+count-1])-1]
+				break
 			}
 		}
 		i += count
